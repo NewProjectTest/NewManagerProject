@@ -69,7 +69,7 @@
 
 		<!--面包屑导航-->
 		<div class="container mian-nav" id="navDiv">公开课 / ${subjectList.subject_name }</div>
-		
+		<c:if test="${!empty courseList }">
 		<c:forEach begin="0" end="${courseList.size()-1 }" var="j">
 			<div class="classify">
 				<div class="container" id="dataContainer">
@@ -109,7 +109,7 @@
 				</div>
 			</div>
 		</c:forEach>
-
+		</c:if>
 		<!--页脚-->
 		<footer>
 			<ul>
