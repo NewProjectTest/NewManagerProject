@@ -53,11 +53,12 @@
 			</div>
 			<a onclick="JavaScript:addFavorite2()">
 			<img src="z/sc.png" draggable="false">加入收藏</a> 
-			<a target="_blank" id="login_open">
+			<a target="_blank" id="login1_open">
 				<img src="z/we.png"draggable="false">后台管理</a> <a class="color_e4">
 				<img src="z/phone.png" draggable="false"> 0371-88888598 4006-371-555
 			</a>
-	</div>
+
+		</div>
 	</header>
 
 
@@ -77,8 +78,7 @@
 				<table cellspacing="10">
 					<tbody>
 						<tr>
-							<td colspan="2">
-							<a href="WebCourseShow?number=1"> <img
+							<td colspan="2"><a href="WebCourseShow?number=1"> <img
 									src="z/html5.jpg"
 									alt="" class="image scale" draggable="false">
 									<div class="headline">
@@ -87,7 +87,7 @@
 									</div>
 							</a></td>
 							<td>
-								<!--上线时修改id--> <a> <img
+								<!--上线时修改id--> <a href="WebCourseShow?number=6"> <img
 									src="z/ui.jpg"
 									alt="" class="image scale" draggable="false">
 									<div class="headline">
@@ -111,7 +111,7 @@
 										<span>大数据教程</span> <img src="z/arrow.png" alt="">
 									</div>
 							</a></td>
-							<td colspan="2"><a> <img
+							<td colspan="2"><a href="WebCourseShow?number=10"> <img
 									src="z/python.jpg"
 									alt="" class="image scale" draggable="false">
 									<div class="headline">
@@ -120,7 +120,7 @@
 							</a></td>
 						</tr>
 						<tr>
-							<td colspan="2"><a> <img
+							<td colspan="2"><a href="WebCourseShow?number=11"> <img
 									src="z/php.jpg"
 									alt="" class="image scale" draggable="false">
 									<div class="headline">
@@ -241,6 +241,26 @@
 			</div>
 			<div class="mask_content_footer">
 				<span id="login_close">关 闭</span>
+			</div>
+		</div>
+	</div>
+	
+	<!--后台登录注册弹出框-->
+	<div class="mask hidden" id="login1">
+		<div class="mask_content">
+			<div class="mask_content_header">
+				<img src="z/logo.png" alt="" class="ma">
+			</div>
+			<div class="mask_content_body">
+				<form id="loginForm" action="adminLogin">
+					<h3>快速登录</h3>
+					 <input  placeholder="请输入邮箱" name="accounts" type="text">
+					 <input  placeholder="请输入密码" name="password" type="password">
+					<input value="登　录" type="submit">
+				</form>
+			</div>
+			<div class="mask_content_footer">
+				<span id="login1_close">关 闭</span>
 			</div>
 		</div>
 	</div>
