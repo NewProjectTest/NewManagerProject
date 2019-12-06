@@ -245,7 +245,7 @@ function commitRegForm(){
 verifyCode = new GVerify("v_container");
 
 function commitLogin(){
-   
+
    var email =$("#loginEmail").val();
    var password =$("#loginPassword").val();
    if(null!=email && email!="" && null!=password && password!=""){
@@ -253,12 +253,20 @@ function commitLogin(){
        // alert(params);
         // post要小写
         $.post("generalUserLogin",params,function(data){
-        // alert(data);
+
                  if(data=='success'){
+                      $("#tishi").text("").css("color","red");
                       document.location.reload();
                    }
+                 if(data=='false'){
+                	   $("#tishi").text("密码不正确").css("color","red");
+                   }
+                 if(data=='NoAccount'){
+                	   $("#tishi").text("没有账户").css("color","red");
+                   }
+                 
         });
-        
+        alert(data);
         return false;
    }
    

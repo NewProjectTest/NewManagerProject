@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.zhiyou.model.Speaker;
@@ -16,12 +17,10 @@ public class AdminController {
 
 	@Autowired
 	AdminService service;
-
 	@RequestMapping(value = "adminLogin")
-	public ModelAndView adminLogin(String accounts, String password, HttpServletRequest req, HttpServletResponse resp) {
+	public ModelAndView  adminLogin(String accounts, String password, HttpServletRequest req, HttpServletResponse resp) {
 		
-		System.out.println(123);
-		System.out.println("admin");
+		
 		Integer num = service.adminLogin(accounts, password, req);
 		ModelAndView model = new ModelAndView();
 		if (num == 1) {
@@ -31,11 +30,11 @@ public class AdminController {
 
 		} else if (num == 2) {
 			model.addObject("msg", "密码错误");
-			model.setViewName("adminLogin");
+			//model.setViewName("forward:ShouYe.jsp");
 		} else {
 
 			model.addObject("msg", "账号错误");
-			model.setViewName("adminLogin");
+			//model.setViewName("forward:ShouYe.jsp");
 		}
 		return model;
 	}

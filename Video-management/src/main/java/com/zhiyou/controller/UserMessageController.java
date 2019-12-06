@@ -67,6 +67,7 @@ public class UserMessageController {
 	@RequestMapping(value = "soloshow")
 	public String soloshow(HttpServletRequest req, HttpServletResponse resp) {
 		User User = (User) req.getSession().getAttribute("list");
+		System.out.println(User);
 		req.setAttribute("list", User);
 		return "frontDesk/GeRenZhongXinZhanShi";
 	}

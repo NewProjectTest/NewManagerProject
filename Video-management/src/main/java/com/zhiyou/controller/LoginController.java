@@ -32,13 +32,8 @@ public class LoginController {
 	public String generalUserLogin(String accounts, String password, HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		req.setCharacterEncoding("UTF-8");
-		String aString = null;
 		User user = service.selectByAccounts(accounts, req, MD5Util.getMD5String(password));
-		if (user == null) {
-			aString = "false";
-		} else {
-			aString = "success";
-		}
+		String aString = (String) req.getSession().getAttribute("msg");
 		System.out.println(aString);
 		req.getSession().setAttribute("list", user);
 		return aString;

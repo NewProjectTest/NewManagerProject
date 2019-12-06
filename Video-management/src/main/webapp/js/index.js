@@ -230,9 +230,16 @@ function commitLogin(){
         // post要小写
         $.post("generalUserLogin",params,function(data){
         // alert(data);
-                 if(data=='success'){
-                      document.location.reload();
-                   }
+        	if(data=='success'){
+                $("#tishi").text("").css("color","red");
+                document.location.reload();
+             }
+           if(data=='false'){
+          	   $("#tishi").text("密码不正确").css("color","red");
+             }
+           if(data=='NoAccount'){
+          	   $("#tishi").text("没有账户").css("color","red");
+             }
         });
         
         return false;

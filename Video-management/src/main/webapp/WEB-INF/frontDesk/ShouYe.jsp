@@ -232,8 +232,8 @@
 					<h3>快速登录</h3>
 					 <input id="loginEmail" placeholder="请输入邮箱" name="accounts" type="email">
 					 <input id="loginPassword" placeholder="请输入密码" name="password" type="password">
+					<i id="tishi"></i>
 					<div id="forget">
-						${msg }
 						<a href="http://localhost:8080/video/front/user/forgetPassword.action">忘记密码？</a>
 					</div>
 					<input onclick="return commitLogin()" value="登　录" type="submit">
@@ -252,10 +252,16 @@
 				<img src="z/logo.png" alt="" class="ma">
 			</div>
 			<div class="mask_content_body">
+
 				<form id="loginForm" action="adminLogin">
 					<h3>快速登录</h3>
 					 <input  placeholder="请输入邮箱" name="accounts" type="text">
 					 <input  placeholder="请输入密码" name="password" type="password">
+
+				<form  action="adminLogin">
+					<h3>管理员登录</h3>
+					 <input style="height: 40px;width: 300px;align-self: center;"  placeholder="请输入邮箱" name="accounts" type="text">
+					 <input style="height: 40px;width: 300px;" placeholder="请输入密码" name="password" type="password">
 					<input value="登　录" type="submit">
 				</form>
 			</div>

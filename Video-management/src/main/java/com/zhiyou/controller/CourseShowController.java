@@ -41,7 +41,7 @@ public class CourseShowController {
 		List<Course> course = service.selectByCourse_id(Integer.valueOf(course_id));
 		List<Subject> subject = service.selectBySubject(subject_id);
 		List<Video> video = service.selectByVideo_id(video_id);
-		Integer integer = video.get(0).getPlay_num();
+		Integer integer = video.get(0).getPlay_num()==null?0:video.get(0).getPlay_num();
 		video.get(0).setPlay_num(integer + 1);
 		service.updateVideo_Play_Num(video.get(0));
 		req.setAttribute("subject", subject.get(0));
@@ -52,7 +52,7 @@ public class CourseShowController {
 		req.setAttribute("speaker1", speakers.get(0));
 		List<Video> videos = service.selectByVideo(Integer.valueOf(course_id));
 		req.setAttribute("videos", videos);
-		for (int i = 0; i < videos.size(); i++) {
+		for (int i = 0; i <=videos.size()-1; i++) {
 			List<Speaker> speaker2 = service.selectBySpeaker(videos.get(i).getSpeaker_id());
 			req.setAttribute("speakers" + i, speaker2.get(0));
 		}

@@ -36,14 +36,14 @@ public class UserServiceImpl implements UserService {
 		}
 
 		if (user2 == null) {
-			req.setAttribute("msg", "账户不存在");
+			req.getSession().setAttribute("msg", "NoAccount");
 			return null;
 		} else if (user2.getPassword().equals(password)) {
-
+			req.getSession().setAttribute("msg", "success");
 			return user2;
 
 		} else {
-			req.setAttribute("msg", "密码不正确");
+			req.getSession().setAttribute("msg", "false");
 			return null;
 		}
 
