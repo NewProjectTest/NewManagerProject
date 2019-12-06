@@ -88,9 +88,8 @@
 							<c:if test="${!empty sessionScope[p]  }">
 									<c:forEach begin="0" end="${sessionScope[p].size()-1 }" var="i">
 										<li class="section-main">
-											<a href="VideoCourseShow?course_desc=${courseList[j].course_desc }&subject_name=${subjectList.subject_name }
-											&title=${sessionScope[p][i].title}&video_url=${sessionScope[p][i].video_url}
-											&speaker_id=${sessionScope[p][i].speaker_id}&detail=${sessionScope[p][i].detail}">
+											<a href="VideoCourseShow?course_id=${courseList[j].id }&subject_id=${subjectList.subject_id }
+											&video_id=${sessionScope[p][i].video_id}">
 												<div class="thum" style="background-image: url('${sessionScope[p][i].image_url}')"></div>
 													<p>${sessionScope[p][i].title}</p>
 												<div class="classify-v-info">

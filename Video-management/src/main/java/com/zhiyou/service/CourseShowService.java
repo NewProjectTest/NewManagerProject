@@ -8,11 +8,19 @@ import com.zhiyou.model.Subject;
 import com.zhiyou.model.Video;
 
 public interface CourseShowService {
-	List<Course> selectByCourse(Integer id);
+	List<Course> selectByCourse(Integer subject_id);
 
 	List<Speaker> selectBySpeaker(Integer id);
 
 	List<Subject> selectBySubject(Integer subject_id);
 
-	List<Video> selectByVideo(Integer video_id);
+	List<Video> selectByVideo(Integer course_id);
+
+	List<Video> selectByVideo_id(Integer video_id);
+
+	List<Course> selectByCourse_id(Integer Course_id);
+
+	List<Video> selectBySpeaker_IdGetVideo(Integer speaker_id);
+
+	void updateVideo_Play_Num(Video Video);
 }

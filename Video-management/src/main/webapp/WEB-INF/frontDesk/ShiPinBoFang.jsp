@@ -71,7 +71,7 @@
 
 	<div>
 		<!--面包屑导航-->
-		<div class="container mian-nav">公开课 / ${subject_name }</div>
+		<div class="container mian-nav">公开课 / ${subject.subject_name }</div>
 		<input id="videoId" value="246" type="hidden">
 		<div id="content">
 
@@ -80,7 +80,7 @@
 					<div class="v-intro">
 						<div class="left">
 							<video id="videoPlayer"
-								src="${video_url }"
+								src="${video.video_url }"
 								class="video-js vjs-default-skin" controls="controls"
 								poster="static/z/02.jpg" data-setup="{}" height="280"
 								width="627">
@@ -88,24 +88,24 @@
 						</div>
 
 						<div class="right">
-							<p class="right-title">${title }</p>
+							<p class="right-title">${video.title }</p>
 							<div class="avatar">
 								<span
-									style="background-image: url('http://vod.zhiyou100.com/gkk/teacher/sw.jpg')"></span>
+									style="background-image: url('${speaker1.pic_url}')"></span>
 								<p>
-									<b>讲师：${speaker.speaker_name }</b><br>
-									<i>${speaker.speaker_desc }</i>
+									<b>${speaker1.speaker_job }：${speaker1.speaker_name }</b><br>
+									<i>${speaker1.speaker_desc }</i>
 								</p>
 							</div>
 							<p class="video-intro">
-								<span>本节内容：</span>${detail }
+								<span>本节内容：</span>${video.detail }
 							</p>
 						</div>
 					</div>
 
 					<div class="kcjs">
 						<p class="title">课程介绍</p>
-						<p class="content">${course_desc }</p>
+						<p class="content">${course.course_desc }</p>
 					</div>
 
 				</div>
@@ -114,22 +114,25 @@
 			<div class="catalog">
 				<div class="container">
 					<p class="title">目录</p>
-
 					
-					<div class="chapter">
-						<p class="biaoti">
-							<a href="otherVideoCourseShow?number=1">前端开发环境搭建</a>
-						</p>
-						<p class="lecturer">前端开发环境的搭建，包括前端常用开发工具介绍、VS
-							Code下载安装，以及前端开发常用运行工具--浏览器的介绍、Firefox下载安装等内容。帮助大家准备好前端开发环境以便深入学习后续小项目</p>
-						<p class="lecturer">讲师：赵桂丹</p>
-						<div class="v-info">
-							<span class="count"><img src="z/count.png"
-								alt="">433</span> <span class="duration"><img
-								src="z/player.png" alt="">562</span>
+					<c:forEach begin="0" end="${videos.size()-1 }" var="j">
+					<c:set var="p" value="speakers${j }"></c:set>
+						<div class="chapter">
+							<p class="biaoti">
+								<a href="VideoCourseShow?course_id=${videos[j].course_id }&video_id=${videos[j].video_id }
+								&subject_id=${subject.subject_id }">${videos[j].title }</a>
+							</p>
+							
+							<p class="lecturer">${videos[j].detail }</p>
+							<p class="lecturer">讲师：${requestScope[p].speaker_name }</p>
+							<div class="v-info">
+								<span class="count"><img src="z/count.png"
+									alt="">${videos[j].play_num}</span> <span class="duration"><img
+									src="z/player.png" alt="">${videos[j].time }</span>
+							</div>
 						</div>
-					</div>
-
+					</c:forEach>
+		
 					
 
 

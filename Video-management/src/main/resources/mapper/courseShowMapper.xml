@@ -36,6 +36,15 @@
 		<result column="image_url" property="image_url" />
 		<result column="play_num" property="play_num" />
 	</resultMap>
+	<update id="updateVideo_Play_Num" parameterType="video">
+		update Video 
+		<set>
+			play_num=#{play_num}
+		</set>
+		where video_id=#{video_id};
+	
+	</update>
+	
 	<select id="selectByCourse" resultMap="courseMap">
 		select *from course where subject_id=#{subject_id};
 	</select>
@@ -47,6 +56,19 @@
 	</select>
 	<select id="selectByVideo" resultMap="videoMap">
 		select *from video where course_id=#{course_id};
+	</select>
+	
+	<select id="selectByVideo_id" resultMap="videoMap">
+		select *from video where video_id=#{video_id};
+	</select>
+	<select id="selectByCourse_id" resultMap="courseMap">
+		select *from course where id=#{id};
+	</select>
+	
+	
+	
+	<select id="selectBySpeaker_IdGetVideo" resultMap="videoMap">
+		select *from video where speaker_id=#{speaker_id};
 	</select>
 	
 	

@@ -36,33 +36,26 @@ public class CourseShowController {
 	}
 
 	@RequestMapping(value = "VideoCourseShow")
-	public String VideoCourseShow(String course_desc, String subject_name, String title, String video_url,
-			String detail, Integer speaker_id, HttpServletRequest req, HttpServletResponse resp) {
+	public String VideoCourseShow(String course_id, Integer subject_id, Integer video_id, HttpServletRequest req,
+			HttpServletResponse resp) {
+		List<Course> course = service.selectByCourse_id(Integer.valueOf(course_id));
+		List<Subject> subject = service.selectBySubject(subject_id);
+		List<Video> video = service.selectByVideo_id(video_id);
+		Integer integer = video.get(0).getPlay_num();
+		video.get(0).setPlay_num(integer + 1);
+		service.updateVideo_Play_Num(video.get(0));
+		req.setAttribute("subject", subject.get(0));
+		req.setAttribute("course", course.get(0));
+		req.setAttribute("video", video.get(0));
 
-		List<Speaker> speaker = service.selectBySpeaker(speaker_id);
-		req.setAttribute("subject_name", subject_name);
-		req.setAttribute("title", title);
-		req.setAttribute("speaker", speaker.get(0));
-		req.setAttribute("detail", detail);
-		req.setAttribute("course_desc", course_desc);
-		req.setAttribute("video_url", video_url);
-
-		return "frontDesk/ShiPinBoFang";
-	}
-
-	@RequestMapping(value = "otherVideoCourseShow")
-	public String otherVideoCourseShow(Integer number, HttpServletRequest req, HttpServletResponse resp) {
-
-		List<Subject> subjectList = service.selectBySubject(number);
-		req.getSession().setAttribute("subjectList", subjectList.get(0));
-		List<Course> courseList = service.selectByCourse(number);
-		req.getSession().setAttribute("courseList", courseList);
-		for (int i = 0; i <= courseList.size() - 1; i++) {
-			List<Video> videoList = service.selectByVideo(Integer.valueOf(courseList.get(i).getId()));
-			courseList.get(i);
-			req.getSession().setAttribute("videoList" + i, videoList);
+		List<Speaker> speakers = service.selectBySpeaker(video.get(0).getSpeaker_id());
+		req.setAttribute("speaker1", speakers.get(0));
+		List<Video> videos = service.selectByVideo(Integer.valueOf(course_id));
+		req.setAttribute("videos", videos);
+		for (int i = 0; i < videos.size(); i++) {
+			List<Speaker> speaker2 = service.selectBySpeaker(videos.get(i).getSpeaker_id());
+			req.setAttribute("speakers" + i, speaker2.get(0));
 		}
-
 		return "frontDesk/ShiPinBoFang";
 	}
 

@@ -37,4 +37,24 @@ public class CourseShowServiceImpl implements CourseShowService {
 		// TODO Auto-generated method stub
 		return mapper.selectByVideo(video_id);
 	}
+
+	public List<Video> selectBySpeaker_IdGetVideo(Integer speaker_id) {
+		// TODO Auto-generated method stub
+		return mapper.selectBySpeaker_IdGetVideo(speaker_id);
+	}
+
+	public List<Video> selectByVideo_id(Integer video_id) {
+		// TODO Auto-generated method stub
+		return mapper.selectByVideo_id(video_id);
+	}
+
+	public List<Course> selectByCourse_id(Integer Course_id) {
+		// TODO Auto-generated method stub
+		return mapper.selectByCourse_id(Course_id);
+	}
+
+	public void updateVideo_Play_Num(Video Video) {
+		// TODO Auto-generated method stub
+		mapper.updateVideo_Play_Num(Video);
+	}
 }
