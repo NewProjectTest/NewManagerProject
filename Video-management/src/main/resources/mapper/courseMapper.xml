@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <mapper namespace="sb.sb1"> -->
+
+<mapper namespace="com.zhiyou.mapper.CourseMapper">
+
+	<resultMap type="course" id="resultMap">
+		<id column="id" property="id" />
+		<result column="course_title" property="course_title" />
+		<result column="course_desc" property="course_desc" />
+		<result column="subject_id" property="subject_id" />
+	</resultMap>
+	<resultMap type="subject" id="subjectMap">
+		<id column="subject_id" property="subject_id" />
+		<result column="subject_name" property="subject_name" />
+	</resultMap>
+	<insert id="courseAdd" parameterType="course">
+		INSERT INTO course values (null, #{course_title}, #{course_desc}, #{subject_id});
+	</insert>
+	<update id="courseUpdate" parameterType="course">
+		UPDATE course SET course_title = #{course_title}, course_desc = #{course_desc},subject_id=#{subject_id} WHERE id = #{id};
+	</update>
+	<select id="courseAll" resultMap="resultMap" parameterType="integer">
+		select * from course limit #{page},4;
+	</select>
+	<select id="Ucourse" resultType="course">
+		select * from course where id = #{id} ;
+	</select>
+	<select id="subjectId" resultMap="subjectMap">
+		select * from subject;
+	</select>
+	<select id="count" resultType="int">
+		SELECT COUNT(*) FROM course;
+	</select>
+	<delete id="Dcourse" parameterType="integer">
+		DELETE FROM course where id = #{id};
+	</delete>
+</mapper>

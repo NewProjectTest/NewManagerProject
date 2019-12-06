@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <mapper namespace="sb.sb1"> -->
+
+<mapper namespace="com.zhiyou.mapper.AdminMapper">
+
+	
+
+	<resultMap type="speaker" id="speaker">
+		<id column="id" property="id"/>
+		<result column="speaker_name" property="speaker_name"/>
+		<result column="speaker_desc" property="speaker_desc"/>
+		<result column="speaker_job" property="speaker_job"/>
+		<result column="pic_url" property="pic_url"/>
+
+	
+	</resultMap>
+	<select id="videShow" resultMap="speaker">
+		select * from speaker;
+
+	</select>
+	<!-- resultMap*| |insert*|update*|delete*|select*)+". -->
+	 <insert id="AddSpeaker"  parameterType="speaker" >
+ 		INSERT INTO speaker VALUES (null,#{speaker_name},#{speaker_desc},#{speaker_job},#{pic_url});
+ 	</insert>
+ 	<update id="updateSpeaker" parameterType="speaker" >
+ 		UPDATE speaker SET  speaker_name = #{speaker_name}, speaker_desc = #{speaker_desc}, speaker_job =#{speaker_job}, pic_url = #{pic_url} WHERE id = #{id};
+ 	</update>
+ 	<delete id="DeleteSpeaker" >
+ 		DELETE FROM speaker WHERE id = #{id};
+ 	</delete>
+	<select id="adminLogin" resultType="admin">
+		select * from admin where accounts = #{accounts};
+	</select>
+	
+	<select id="speakerShow" resultMap="speaker">
+		select * from speaker limit #{page},3;
+
+	</select>
+	<select id="SpeakerSelectById" resultType="speaker">
+		select * from speaker where id = #{id};
+	</select>
+
+	<select id="count" resultType="int">
+		select count(*) from speaker;
+	</select>
+
+
+
+
+</mapper>

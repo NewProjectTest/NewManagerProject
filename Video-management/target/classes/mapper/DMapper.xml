@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <mapper namespace="sb.sb1"> -->
+
+<mapper namespace="com.zhiyou.mapper.D">
+<insert id="addVideo" parameterType="com.zhiyou.model.D">
+	INSERT INTO 123 VALUES (#{id}, #{url});
+</insert>
+</mapper>
