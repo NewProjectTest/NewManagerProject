@@ -29,7 +29,7 @@ th {
 			<h2>课程管理</h2>
 		</div>
 	</div>
-	<form action="http://localhost:8080/Voids/Course/deleteall.do">
+	<form action="">
 		<div class="container">
 			<a  type="button"  href="ACourse"
 				class="btn btn-info dropdown-toggle" >添加</a>
@@ -44,7 +44,7 @@ th {
 				style="text-align: center; table-layout: fixed;">
 				<thead>
 					<tr class="active">
-						<th><input type="checkbox" id="all"></th>
+						<th><input type="checkbox" onchange="a()" id="all"></th>
 						<th>序号</th>
 						<th style="width: 16%">标题</th>
 						<th style="width: 60%">简介</th>
@@ -56,7 +56,7 @@ th {
 		<c:forEach begin="0" end="${list.size()-1}" var="i">
 					<tr>
 					
-						<td><input type="checkbox" > </td>
+						<td><input type="checkbox" name="c"  value="${list[i].id }"> </td>
 						<td>${i }<input type="hidden" id="id" value="${list[i].id }"></td>
 						<td>${list[i].course_title}</td>
 						<td style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">${list[i].course_desc}</td>
@@ -78,13 +78,13 @@ th {
 
 <div style="float:left;width:210px;height:80px;">
 		
-		<c:if test="${count%2==0}">
-			<c:set value = "${count/2}" var="page"></c:set>
+		<c:if test="${count%4==0}">
+			<c:set value = "${count/4}" var="page"></c:set>
 			<fmt:parseNumber var="page" value="${page}" integerOnly="true" />
 			总共${count}条记录,共${page}页
 		</c:if>
-		<c:if test="${count%2!=0}">
-			<c:set value = "${count/2 +1 }" var="page"></c:set>
+		<c:if test="${count%4!=0}">
+			<c:set value = "${count/4 +1 }" var="page"></c:set>
 			<fmt:parseNumber var="page" value="${page}" integerOnly="true" />
 			总共${count}条记录,共${page}页
 		</c:if>
@@ -107,25 +107,41 @@ th {
 	</div>	
 
 
-	<script type="text/javascript">
-	function Delete(id){
-		var d = id;
-		  if (confirm("确定删除嘛?")) {
-			 
-			  $.ajax({
-					url:"Dcourse",	
-					type:"get",		
-					data:{			
-						name:d
-					},
-					success:function(data){
-						 location.reload();
-						alert("删除成功");
+<script type="text/javascript">
+function a() {
+	var stuts=document.getElementById("all").checked;
+    
+    var c=document.getElementsByName("c");
+     for(var i=0;i<c.length;i++){
+          c[i].checked=stuts;
+      }
+    
+    };
+    function deleteAll(){
+    	
+        var checkedNum  = $("input[name='c']:checked").length;
+			var userIds = new Array();
+          $("input[name='c']:checked").each(function(){
+              userIds.push($(this).val());
+          });
+          
+          if(confirm("确定删除所选项？")){
+        	 
+              $.post("cAll",{userIds:userIds},
+                 function(data){
+            	
+					if(data =='ok'){
+						
+						document.location.reload();
+					}else{
+						Confirm.show('温馨提示：', '操作失败');
 					}
-				})
-		  }
-	}
-	</script>
+              	 });
+         	}
+
+    }
+</script>	
+	
 
 </body>
 </html>

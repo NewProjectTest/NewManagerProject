@@ -115,6 +115,7 @@ public class VideoController {
 		model.addObject("slist", slist);
 		model.addObject("clist", clist);
 		model.addObject("list", list);
+		model.addObject("msg", "1");
 		model.setViewName("backstage/void/videoShow");
 		return model;
 		
@@ -125,7 +126,6 @@ public class VideoController {
 	public String  dAll(@RequestParam("userIds[]")  Integer[] userIds,HttpServletRequest req,HttpServletResponse resp) {
 		List<Integer> userIdList = Arrays.asList(userIds);
 		int num = Service.dAll(userIdList,resp);
-		System.out.println(num);
 		if (num == 1||num == 2||num == 3) {
 			return "ok";
 		}

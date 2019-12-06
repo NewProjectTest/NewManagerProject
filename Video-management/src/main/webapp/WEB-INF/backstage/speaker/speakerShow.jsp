@@ -7,14 +7,6 @@
 <head>
 <meta charset="UTF-8">
 
-<script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-
-<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
-<title>主讲人管理</title>
-</head>
-<body>
-
-
 <script src="js/jquery-1.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/confirm.js"></script>
@@ -25,17 +17,20 @@
 <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
 <title>主讲人管理</title>
 </head>
-<script type="text/javascript" language="javascript">
-if(${msg} == 1){
-alert("修改成功");
-	}
-if(${msg} == 2){
-	alert("添加成功");
-	}
-if(${msg} == 3){
-	alert("删除成功");
-	}
-</script>
+
+<style type="text/css">
+th {
+	text-align: center;
+}
+td {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+</style>
+
+
+
 <body>
 	<div class="jumbotron" style="padding-top: 15px; padding-bottom: 15px;">
 		<div class="container">
@@ -44,8 +39,10 @@ if(${msg} == 3){
 	</div>
 <div style="width: 100%;height: 250px;">
 
-<table class="table table-bordered">
-	<tr>
+<table class="table table-bordered table-hover"
+				style="text-align: center; table-layout: fixed;">
+	<thead>
+	<tr class="active">
 		<td>序号</td>
 		<td>ID</td>
 		<td>名字</td>
@@ -54,6 +51,8 @@ if(${msg} == 3){
 		<td>url</td>
 		<td>操作</td>
 	</tr>
+	</thead>
+	<tbody>
 	<c:forEach begin="0" end="${list.size()-1}" var = "i">
 	<tr>
 		<td>${i }</td>
@@ -63,14 +62,13 @@ if(${msg} == 3){
 		<td>${list[i].speaker_job }</td>
 		<td>${list[i].pic_url }</td>
 		<td>
-			<a class="btn btn-success" href="Uspeaker?id=${list[i].id }">（编辑）Success</a>
-
-
+			<a class="btn btn-success" href="Uspeaker?id=${list[i].id }">（编辑）Success</a><br>
 			<a  class="btn btn-danger" href="Dspeaker?id=${list[i].id }">（删除）Danger</a>
 
 		</td>
 	</tr>
 	</c:forEach>
+	</tbody>
 </table>
 
 </div>
@@ -111,6 +109,17 @@ if(${msg} == 3){
 <a class="btn btn-success" href="updateSpeaker">（添加）Add</a>
 </div>	
 
+<script type="text/javascript" language="javascript">
+if(${msg} == 1){
+alert("修改成功");
+	}
+if(${msg} == 2){
+	alert("添加成功");
+	}
+if(${msg} == 3){
+	alert("删除成功");
+	}
+</script>
 
 
 </body>

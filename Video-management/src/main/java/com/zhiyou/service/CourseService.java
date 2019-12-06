@@ -2,6 +2,8 @@ package com.zhiyou.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import com.zhiyou.model.Course;
 import com.zhiyou.model.Subject;
 
@@ -20,5 +22,7 @@ public interface CourseService {
 	void Dcourse(Integer id);
 
 	int count();
+
+	int dAll(List<Integer> userIdList);
 
 }

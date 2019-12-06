@@ -46,7 +46,7 @@ th {
 			</ul>
 			<p class="navbar-text navbar-right">
 				<span>admin</span> <i class="glyphicon glyphicon-log-in"
-					aria-hidden="true"></i>&nbsp;&nbsp;<a class="navbar-link">退出</a>
+					aria-hidden="true"></i>&nbsp;&nbsp;<a class="navbar-link" href="ExitHomePageShow">退出</a>
 			</p>
 		</div>
 		<!-- /.navbar-collapse -->

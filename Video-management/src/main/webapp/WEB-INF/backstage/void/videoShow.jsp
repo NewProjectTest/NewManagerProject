@@ -20,6 +20,12 @@
 th {
 	text-align: center;
 }
+
+td {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
 </style>
 <body>
 	<div class="jumbotron" >
@@ -51,7 +57,10 @@ th {
 			</div>
 		</div>
 	</div>
-	
+	<button onclick="deleteAll()" class="btn btn-info dropdown-toggle">
+		      批量删除
+	</button>
+		<a class="btn btn-success" href="videoA" >（添加）Add</a>
 	<table class="table table-bordered table-hover"
 				style="text-align: center; table-layout: fixed;">
 				<thead>
@@ -61,8 +70,9 @@ th {
 		<td>名称</td>
 		<td>详情</td>
 		<td>时间</td>
+		<c:if test="${msg != 1 }">
 		<td>讲师名字</td>
-		
+		</c:if>
 		<td>视频url</td>
 		<td>封面url</td>
 		<td>播放次数</td>
@@ -74,28 +84,25 @@ th {
 	<tr>
 		<td><input type="checkbox" name="c" value="${list.video_id}"></td>
 		<td>${list.video_id }</td>
-		<td>${list.title }</td>
+		<td >${list.title }</td>
 		<td>${list.detail }</td>
 		<td>${list.time }</td>
+		<c:if test="${msg != 1 }">
 		<td>${list.speaker.speaker_name }</td>
-		
+		</c:if>
 		<td>${list.video_url}</td>
 		<td>${list.image_url }</td>
 		<td>${list.play_num }</td>
 		<td>
-			<a class="btn btn-success" href="videoA?id=${list.video_id }">（编辑）</a>
+			<a class="btn btn-success" href="videoA?id=${list.video_id }">（编辑）</a><br>
 			<a  class="btn btn-danger" href="Dvideo?id=${list.video_id }">（删除）</a>
 		</td>
 	</tr>
 	</c:forEach>
 	</tbody>
 </table>
-	<button onclick="deleteAll()" class="btn btn-info dropdown-toggle">
-		      批量删除
-		</button>
-<div style="float: left;width:100%;margin-top: 70px; ">
-
-
+	
+<div style="float: left;width:100%;margin-top: 70px; background: gray;">
 
 <div style="float:left;width:210px;height:80px;">
 		
@@ -125,7 +132,7 @@ th {
 			</c:if>
 		</div>
 
-<a class="btn btn-success" href="videoA" >（添加）Add</a>
+
 </div>	
 	
 <script type="text/javascript">
@@ -152,7 +159,7 @@ function a() {
                  function(data){
             	 
 					if(data =='ok'){
-						Confirm.show('温馨提示：', '删除成功');
+						
 						document.location.reload();
 					}else{
 						Confirm.show('温馨提示：', '操作失败');
