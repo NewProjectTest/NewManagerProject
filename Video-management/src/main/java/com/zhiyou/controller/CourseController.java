@@ -1,5 +1,6 @@
 package com.zhiyou.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -29,7 +31,7 @@ public class CourseController {
 			page=1;
 		}
 		
-		List<Course> list = Service.courseAll(((page-1)*2));
+		List<Course> list = Service.courseAll(((page-1)*4));
 		int num = Service.count();
 		ModelAndView model = new ModelAndView();
 		model.addObject("list",list);
@@ -83,6 +85,18 @@ public class CourseController {
 			model.addObject("list", list);
 		  model.setViewName("backstage/course/courseUpdate");
 		  return model; 
+	  }
+	  @ResponseBody
+	  @RequestMapping("cAll") 
+	  private String  dAll(@RequestParam("userIds[]")  Integer[] userIds, HttpServletRequest req,HttpServletResponse resp) {
+		  
+		  List<Integer> userIdList = Arrays.asList(userIds);
+			int num = Service.dAll(userIdList);
+			if (num == 1||num == 2||num == 3) {
+				return "ok";
+			}
+			return "error";
+			
 	  }
 	  
 	

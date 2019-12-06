@@ -42,5 +42,9 @@ public class CourseServiceImpl implements CourseService {
 		// TODO Auto-generated method stub
 		return mapper.count();
 	}
+	public int dAll(List<Integer> userIdList) {
+		// TODO Auto-generated method stub
+		return mapper.dAll(userIdList);
+	}
 
 }
