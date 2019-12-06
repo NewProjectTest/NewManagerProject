@@ -1,6 +1,7 @@
 package com.zhiyou.controller;
 
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,6 +22,7 @@ import com.zhiyou.model.Course;
 import com.zhiyou.model.Speaker;
 import com.zhiyou.model.Video;
 import com.zhiyou.service.VideoService;
+import com.zhiyou.uitl.FTPUtil;
 
 
 @Controller
@@ -92,11 +94,18 @@ public class VideoController {
 		 if (video.getVideo_id() == null) {
 			 if (!MP.isEmpty()) {
 				 //String videoName = Service.addVideo(file);
-				 video.setImage_url(Service.addVideo(MP));
+				
+					video.setImage_url(Service.addVideoIMG(IMG));
+			
 			}
 			 if (!IMG.isEmpty()) {
 				 // String imgName = Service.addVideoIMG(img);
-				 video.setVideo_url(Service.addVideoIMG(IMG));
+				 try {
+					video.setVideo_url(FTPUtil.upload(MP.getInputStream(), MP.getOriginalFilename()));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			 
 			Service.videoAdd(video);
