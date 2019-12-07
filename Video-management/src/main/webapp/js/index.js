@@ -248,7 +248,34 @@ function commitLogin(){
    return false;
 }
 
-
+function commitLogin1(){
+	   
+	   var email =$("#loginEmail").val();
+	   var password =$("#loginPassword").val();
+	   if(null!=email && email!="" && null!=password && password!=""){
+	        var params=$("#loginForm1").serialize();
+	       // alert(params);
+	        // post要小写
+	        $.post("adminLogin",params,function(data){
+	        // alert(data);
+	        	if(data=='success'){
+	        		document.location.href="show";
+	                $("#tishi1").text("").css("color","red");
+	              
+	             }
+	           if(data=='false'){
+	          	   $("#tishi1").text("密码不正确").css("color","red");
+	             }
+	           if(data=='NoAccount'){
+	          	   $("#tishi1").text("没有账户").css("color","red");
+	             }
+	        });
+	        
+	        return false;
+	   }
+	   
+	   return false;
+	}
 function addFavorite2() {
 	var url = window.location;
 	var title = document.title;

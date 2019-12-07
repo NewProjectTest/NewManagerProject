@@ -48,7 +48,7 @@ td {
 		<td>名字</td>
 		<td>经验</td>
 		<td>职位</td>
-		<td>url</td>
+		<td>头像路径</td>
 		<td>操作</td>
 	</tr>
 	</thead>

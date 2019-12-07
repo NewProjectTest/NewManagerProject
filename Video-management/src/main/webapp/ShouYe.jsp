@@ -252,11 +252,12 @@
 				<img src="z/logo.png" alt="" class="ma">
 			</div>
 			<div class="mask_content_body">
-				<form id="loginForm" action="adminLogin">
+				<form id="loginForm1" action="adminLogin">
 					<h3>快速登录</h3>
-					 <input style="height: 40px;width: 300px;align-self: center;" placeholder="请输入邮箱" name="accounts" type="text">
-					 <input style="height: 40px;width: 300px;" placeholder="请输入密码" name="password" type="password">
-					<input value="登　录" type="submit">
+					 <input id="loginEmail" style="height: 40px;width: 300px;align-self: center;" placeholder="请输入邮箱" name="accounts" type="text">
+					 <input id="loginPassword" style="height: 40px;width: 300px;" placeholder="请输入密码" name="password" type="password">
+					<i id="tishi1"></i>
+					<input value="登　录" type="submit" onclick="return commitLogin1()">
 				</form>
 			</div>
 			<div class="mask_content_footer">

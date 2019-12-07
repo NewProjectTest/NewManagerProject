@@ -50,7 +50,7 @@ public class VideoController {
 		model.addObject("count", num);
 		model.addObject("pagee", page);
 		
-		
+		model.addObject("msg", "0");
 		model.addObject("slist", slist);
 		model.addObject("clist", clist);
 		model.setViewName("backstage/void/videoShow");

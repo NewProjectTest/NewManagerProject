@@ -9,36 +9,6 @@
 <head>
 <meta charset="UTF-8">
 
-<title>Insert title here</title>
-</head>
-<body>
-<form action="">
-<table class="table table-bordered">
-	<tr>
-		<td>序号</td>
-		<td>ID</td>
-		<td>名字</td>
-		<td>经验</td>
-		<td>职位</td>
-		<td>url</td>
-	
-	</tr>
-	
-	<tr>
-		
-		<td><input type="text" value="${speaker.id }"></td>
-		<td><input type="text" value="${speaker.speaker_name }"></td>
-		<td><input type="text" value="${speaker.speaker_desc }"></td>
-		<td><input type="text" value="${speaker.speaker_job }"></td>
-		<td><input type="text" value="${speaker.pic_url }"></td>
-		<td>
-			<input type="submit" class="btn btn-danger" value="（保存）save">
-		</td>
-	</tr>
-</table>
-<a  class="btn btn-danger" href="show">（返回）return</a>
-</form>
-
 <title>修改</title>
 <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -47,7 +17,7 @@
 <body>
 
 
-<form action="updateSpeaker">
+<form action="updateSpeaker" method="post" enctype="multipart/form-data"><br><br><br><br><br><br>
  <c:if test="${speaker.id != null}">
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">ID</label>
@@ -66,10 +36,13 @@
     <label for="inputPassword3" class="col-sm-2 control-label">职位</label>
       <input type="text" name="speaker_job" value="${speaker.speaker_job }">
   </div>
+  <!-- 照片路径 -->
   <div class="pic_url">
-    <label for="inputPassword3" class="col-sm-2 control-label">URL</label>
-      <textarea style="width: 200px;height: 80px;" name="pic_url" >${speaker.pic_url }</textarea>
-   
+    <label for="inputPassword3" class="col-sm-2 control-label">头像</label>
+    	<input type="hidden" value="${speaker.pic_url }" name="pic_url">
+    	<input type="file" name="img">
+      <%-- <textarea style="width: 200px;height: 80px;" name="pic_url" >${speaker.pic_url }</textarea>
+    --%>
   </div>
  
   
